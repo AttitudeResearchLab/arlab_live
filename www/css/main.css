@@ -1,0 +1,117 @@
+html, body {
+	height: 100%;
+	background: url("../res/bg.png") repeat;
+}
+
+#wrapper {
+	min-height: 100%;
+	position: relative;
+}
+
+#main:-webkit-full-screen {
+	width: 100%;
+	padding: 0px;
+}
+
+#main:-webkit-full-screen .flex-center {
+	width: 100%;
+	padding: 0px;
+	max-width: 100%;
+}
+
+#main:-webkit-full-screen #title {
+	display: none;
+}
+
+#main:-webkit-full-screen video {
+	width: 100%;
+	height: auto;
+	background: #111111;
+}
+
+#main:-webkit-full-screen #barrage-control {
+	margin-top: 0px;
+	position: absolute;
+	bottom: 0px;
+}
+
+#main:-webkit-full-screen #fullscreen-toggle {
+	display: none;
+}
+
+#main {
+	margin-top: 90px;
+	padding-bottom: 230px;
+	padding-left: 5%;
+	padding-right: 5%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.flex-center {
+	max-width: 1500px;
+	padding: 0px 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#main #title {
+	margin-bottom: 80px;
+	text-shadow: 1px 1px 3px #000000; 
+}
+
+#main video {
+	width: 100%;
+	height: auto;
+}
+
+#main video::-webkit-media-controls-fullscreen-button {
+	display: none !important;
+}
+
+#main video::-webkit-media-controls-time-remaining-display {
+	display: none !important;
+}
+
+#main video::-webkit-media-controls-timeline {
+	display: none !important;
+}
+
+#main #curtain {
+	position: absolute;
+	visibility: hidden;
+	background: url("../res/bg_dark.png") repeat;
+	color: #FFFFFF;
+	font-size: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#main #barrage-canvas {
+	position: absolute;
+}
+
+#main #barrage-control {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: row;
+}
+
+#main #barrage-control input {
+	flex-shrink: 1;
+	margin-top: 5px;
+}
+
+#main #barrage-control button {
+	flex-shrink: 0;
+}
+
+#footer {
+	position: absolute;
+	bottom:0;
+	width: 100%;
+}

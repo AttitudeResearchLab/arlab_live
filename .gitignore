@@ -1,0 +1,14 @@
+.DS_Store
+
+*.mp4
+*.webm
+*.csv
+
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask stuff:
+instance/
+.webassets-cache

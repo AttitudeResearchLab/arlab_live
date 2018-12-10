@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ARLab Live</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Bootstrap core CSS -->
+	<link href="lib/mdb/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="lib/mdb/css/mdb.min.css" rel="stylesheet">
+
+	<link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+	<div id="wrapper">
+		<!-- Navigation -->
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark pink scrolling-navbar">
+				<a class="navbar-brand" href="#"><strong>ARLab Live</strong></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="http://www.ar-lab.cn">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Live</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="http://www.ar-lab.cn/current">People</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+
+		<!-- Main -->
+		<div id="main" class="container-fluid">
+			<div class="flex-center container-fluid">
+				<div id="title">
+					<h1><i class="fa fa-youtube-play"></i> ARLab Live Show</h1>
+				</div>
+
+				<div class="container-fluid">
+					<canvas id="barrage-canvas"></canvas>
+					<div id="curtain">
+						<h1>Video has ended.</h1>
+					</div>
+					<video id="video-player" class="video-js vjs-default-skin z-depth-2" preload="auto" controls>
+						<source src="./res/demo.mp4"></source>
+					</video>
+				</div>
+
+				<div id="barrage-control" class="container-fluid">
+					<button class="btn btn-purple" id="fullscreen-toggle"><i style="padding-right: 5px" class="fa fa-expand" aria-hidden="true"></i> Fullscreen</button>
+					<button class="btn btn-pink" id="send-barrage">Send</button>
+					<input class="form-control form-control-lg" id="input-barrage" type="text" placeholder="分享弹幕 释放精彩">
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Footerc -->
+		<footer id="footer" class="page-footer font-small pink">
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-5">
+				© 2018 Copyright: ARLab @ ShanghaiTech.
+				<div>
+					<b>Test Passed on Google Chrome 70</b>
+				</div>
+				<div>
+					<b>Website: </b><a href="http://www.ar-lab.cn">www.ar-lab.cn</a>
+				</div>
+			</div>
+
+		</footer>
+	</div>
+
+
+	<!-- JQuery -->
+	<script type="text/javascript" src="lib/mdb/js/jquery-3.3.1.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="lib/mdb/js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="lib/mdb/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="lib/mdb/js/mdb.min.js"></script>
+
+	<script src="js/Barrage.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
