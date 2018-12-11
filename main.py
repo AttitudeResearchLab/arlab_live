@@ -18,7 +18,7 @@ api = Api(app)
 
 def saveRecordCSV(arr, user):
 	if not user:
-		user = time.time()
+		user = int(time.time())
 
 	with open('data/%s.csv' % user, mode='w') as csv_file:
 		fieldnames = ['time', 'operation', 'content']
