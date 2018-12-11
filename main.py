@@ -41,7 +41,7 @@ class RecordSaver(Resource):
 
 		saveRecordCSV(data_arr, user)
 
-		return "Ok", 200
+		return "Ok, record saved.", 200
 
 
 api.add_resource(RecordSaver, '/')
