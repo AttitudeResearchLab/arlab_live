@@ -27,7 +27,7 @@ function loadBarrage(index, callback) {
 
 $(document).ready(function() {
 	var records = [];
-	var RECORD_API_URL = "http://localhost:5000/";
+	var RECORD_API_URL = "http://" + window.location.hostname + ":5000/";
 
 
 	function updateCurtainSize() {
