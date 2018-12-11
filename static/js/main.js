@@ -27,7 +27,33 @@ function loadBarrage(index, callback) {
 
 $(document).ready(function() {
 	var records = [];
+	var user = "";
 	var RECORD_API_URL = "http://" + window.location.hostname + ":5000/";
+
+	$("#finish-basic-info").click(function(e) {
+		e.preventDefault();
+
+		var name = $("#user-name").val().replace(/(^\s*)|(\s*$)/g, ""),
+			id = $("#user-id").val().replace(/(^\s*)|(\s*$)/g, "");
+
+		if (name.length == 0) {
+			alert("Empty user name!");
+
+			return;
+		}
+
+		if (id.length == 0) {
+			alert("Incorrect student ID!");
+
+			return;
+		}
+
+		user = id + "_" + name;
+
+		$("#user-info-section").remove();
+		$("#video-section").show();
+		$("#video-section").css("display", "flex");
+	});
 
 
 	function updateCurtainSize() {
@@ -52,9 +78,18 @@ $(document).ready(function() {
 			method: "POST",
 			crossDomain: true,
 			dataType: "text",
-			data: "data=" + JSON.stringify(records) + "&user=test_user",
+			data: "data=" + JSON.stringify(records) + "&user=" + user,
 			success: function(d) {
 				console.log(d);
+
+				setTimeout(function() {
+					alert("Finished! Thanks for your participation.");
+				}, 3000);
+			},
+			error: function (msg) {
+				console.log(msg);
+
+				alert("Oops!! Something went wrong. Please contact the supervisor.")
 			}
 		});
 	});

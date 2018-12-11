@@ -35,6 +35,13 @@ html, body {
 	bottom: 0px;
 }
 
+#main:-webkit-full-screen #video-section {
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	max-width: 100%;
+}
+
 #main:-webkit-full-screen #fullscreen-toggle {
 	display: none;
 }
@@ -77,6 +84,12 @@ html, body {
 
 #main video::-webkit-media-controls-timeline {
 	display: none !important;
+}
+
+#main #video-section {
+	display: none;
+	flex-direction: column;
+	align-items: center;
 }
 
 #main #curtain {

@@ -48,20 +48,49 @@
 					<h1><i class="fa fa-youtube-play"></i> ARLab Live Show</h1>
 				</div>
 
-				<div class="container-fluid">
-					<canvas id="barrage-canvas"></canvas>
-					<div id="curtain">
-						<h1>Video has ended.</h1>
+				<div id="user-info-section" class="container">
+					<div class="card">
+						<h5 class="card-header gradient-card-header purple-gradient white-text text-center py-4">
+							<strong>Basic Info</strong>
+						</h5>
+
+						<div class="card-body px-lg-5 pt-0">
+							<form class="text-center" style="color: #757575;">
+								<div class="md-form my-5">
+									<input type="text" id="user-name" class="form-control">
+									<label for="user-name">Your name</label>
+								</div>
+								<div class="md-form my-5">
+									<input type="number" id="user-id" class="form-control">
+									<label for="user-id">Your Student ID</label>
+								</div>
+
+								<button class="btn btn-pink btn-rounded btn-block my-5 waves-effect z-depth-0" id="finish-basic-info">Next</button>
+
+								<div>
+									<b><i class="fa fa-bell-o" aria-hidden="true"></i> We promise we WILL NOT make your personal information public.</b><br>
+								</div>
+							</form>
+						</div>
 					</div>
-					<video id="video-player" class="video-js vjs-default-skin z-depth-2" preload="auto" controls>
-						<source src="./res/video1.mp4"></source>
-					</video>
 				</div>
 
-				<div id="barrage-control" class="container-fluid">
-					<button class="btn btn-purple" id="fullscreen-toggle"><i style="padding-right: 5px" class="fa fa-expand" aria-hidden="true"></i> Fullscreen</button>
-					<button class="btn btn-pink" id="send-barrage">Send</button>
-					<input class="form-control form-control-lg" id="input-barrage" type="text" placeholder="分享弹幕 释放精彩">
+				<div id="video-section">
+					<div class="container-fluid">
+						<canvas id="barrage-canvas"></canvas>
+						<div id="curtain">
+							<h1>Video has ended.</h1>
+						</div>
+						<video id="video-player" class="video-js vjs-default-skin z-depth-2" preload="auto" controls>
+							<source src="./res/video1.mp4"></source>
+						</video>
+					</div>
+
+					<div id="barrage-control" class="container-fluid">
+						<button class="btn btn-purple" id="fullscreen-toggle"><i style="padding-right: 5px" class="fa fa-expand" aria-hidden="true"></i> Fullscreen</button>
+						<button class="btn btn-pink" id="send-barrage">Send</button>
+						<input class="form-control form-control-lg" id="input-barrage" type="text" placeholder="分享弹幕 释放精彩">
+					</div>
 				</div>
 			</div>
 		</div>
