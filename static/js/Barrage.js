@@ -19,7 +19,7 @@ function Barrage(list, videoObj, canvasObj) {
 
 	self.getArrivalTimes();
 
-	self.videoSelector.on("loadeddata", function() {
+	self.videoSelector.on("loadedmetadata", function() {
 		self.updateCanvasSize();
 
 		window.requestAnimationFrame(function() { self.mainLoop() });
