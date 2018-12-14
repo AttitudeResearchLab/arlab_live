@@ -33,11 +33,11 @@ $(document).ready(function() {
 	$("#finish-basic-info").click(function(e) {
 		e.preventDefault();
 
-		var name = $("#user-name").val().replace(/(^\s*)|(\s*$)/g, ""),
+		var emailPrefix = $("#email-prefix").val().replace(/(^\s*)|(\s*$)/g, ""),
 			id = $("#user-id").val().replace(/(^\s*)|(\s*$)/g, "");
 
-		if (name.length == 0) {
-			alert("Empty user name!");
+		if (!emailPrefix.match(/^[a-z][a-z0-9]*$/ig) || emailPrefix.length == 0) {
+			alert("Incorrect email prefix!");
 
 			return;
 		}
@@ -48,7 +48,7 @@ $(document).ready(function() {
 			return;
 		}
 
-		user = id + "_" + name;
+		user = id + "_" + emailPrefix;
 
 		$("#user-info-section").remove();
 		$("#video-section").show();

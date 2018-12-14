@@ -22,6 +22,8 @@ function Barrage(list, videoObj, canvasObj) {
 	self.videoSelector.on("play", function() {
 		self.updateCanvasSize();
 
+		$("#input-barrage").removeAttr("disabled");
+
 		window.requestAnimationFrame(function() { self.mainLoop() });
 	});
 }
