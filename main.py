@@ -6,9 +6,9 @@ import csv
 import time
 
 
-parser = reqparse.RequestParser()
-parser.add_argument('data', type=str)
-parser.add_argument('user', type=str)
+req_parser = reqparse.RequestParser()
+req_parser.add_argument('data', type=str)
+req_parser.add_argument('user', type=str)
 
 app = Flask(__name__)
 CORS(app)
@@ -32,7 +32,7 @@ def saveRecordCSV(arr, user):
 
 class RecordSaver(Resource):
 	def post(self):
-		args = parser.parse_args()
+		args = req_parser.parse_args()
 
 		data_str = args['data']
 		data_arr = json.loads(data_str)
@@ -48,4 +48,4 @@ api.add_resource(RecordSaver, '/')
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=True, host='0.0.0.0')
