@@ -6,11 +6,8 @@ from flask_restful import reqparse, abort, Api, Resource
 import json
 import csv
 import time
+from urllib import parse
 
-
-req_parser = reqparse.RequestParser()
-req_parser.add_argument('data', type=str)
-req_parser.add_argument('user', type=str)
 
 app = Flask(__name__)
 CORS(app)
@@ -32,11 +29,18 @@ def saveRecordCSV(arr, user):
 			writer.writerow(row)
 
 
-class RecordSaver(Resource):
-	def post(self):
-		args = req_parser.parse_args()
+class Recorder(Resource):
+	def __init__(self):
+		self.req_parser = reqparse.RequestParser()
+		self.req_parser.add_argument('data', type=str)
+		self.req_parser.add_argument('user', type=str)
 
-		data_str = args['data']
+		super(Recorder, self).__init__()
+
+	def post(self):
+		args = self.req_parser.parse_args()
+
+		data_str = parse.unquote(args['data'])
 		data_arr = json.loads(data_str)
 		
 		user = args['user']
@@ -46,7 +50,7 @@ class RecordSaver(Resource):
 		return "Ok, record saved.", 200
 
 
-api.add_resource(RecordSaver, '/')
+api.add_resource(Recorder, '/')
 
 
 if __name__ == '__main__':

@@ -78,7 +78,7 @@ $(document).ready(function() {
 			method: "POST",
 			crossDomain: true,
 			dataType: "text",
-			data: "data=" + JSON.stringify(records) + "&user=" + user,
+			data: "data=" + encodeURIComponent(JSON.stringify(records)) + "&user=" + encodeURIComponent(user),
 			success: function(d) {
 				console.log(d);
 
