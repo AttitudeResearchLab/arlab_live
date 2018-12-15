@@ -19,7 +19,7 @@ def saveRecordCSV(arr, user):
 	if not user:
 		user = int(time.time())
 
-	with open('data/%s.csv' % user, mode='w') as csv_file:
+	with open('data/%s.csv' % user, mode='w', newline='', encoding='utf-8') as csv_file:
 		fieldnames = ['time', 'operation', 'content']
 		writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
