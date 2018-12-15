@@ -1,3 +1,22 @@
+var GIFT = {
+	"1": {
+		cost: 10,
+		frameNum: 4
+	},
+
+	"2": {
+		cost: 50,
+		frameNum: 21
+	},
+
+	"3": {
+		cost: 20,
+		frameNum: 8
+	}
+};
+
+var money = Math.floor(Math.random() * 10) + 100;
+
 function requestFullscreen(i) {
 	if (i.requestFullscreen) {
 		i.requestFullscreen();
@@ -15,6 +34,25 @@ function enterFullscreen() {
 	requestFullscreen(elem);
 }
 
+function loadGiftImgs(callback) {
+	var res = {};
+	var loadedIdx = 0;
+	var loadedNum = 3;
+
+	for (var i = 1; i <= loadedNum; i++) {
+		var img = new Image();
+		img.index = i;
+		$(img).on('load', function() {
+			res[this.index.toString()] = this;
+
+			if (++loadedIdx == loadedNum) {
+				callback(res);
+			}
+		});
+		img.src = "res/gift" + i + ".png";
+	}
+}
+
 function loadBarrage(index, callback) {
 	$.ajax({
 		url: "res/barrages" + index + ".json",
@@ -29,6 +67,7 @@ $(document).ready(function() {
 	var records = [];
 	var user = "";
 	var RECORD_API_URL = "http://" + window.location.hostname + ":5000/";
+
 
 	$("#finish-basic-info").click(function(e) {
 		e.preventDefault();
@@ -54,6 +93,13 @@ $(document).ready(function() {
 		$("#video-section").show();
 		$("#video-section").css("display", "flex");
 	});
+
+	/*************************************************************/
+	/* Skip basic info */
+	$("#user-info-section").remove();
+	$("#video-section").show();
+	$("#video-section").css("display", "flex");
+	/*************************************************************/
 
 
 	function updateCurtainSize() {
@@ -94,39 +140,62 @@ $(document).ready(function() {
 		});
 	});
 
-	loadBarrage(0, function(barrageList) {
-		var b = new Barrage(barrageList, $("#video-player"), $("#barrage-canvas"));
+	loadGiftImgs(function(imgs) {
+		loadBarrage(0, function(barrageList) {
+			var b = new Barrage(barrageList, imgs, $("#video-player"), $("#barrage-canvas"));
 
-		$(window).resize(function() {
-			b.updateCanvasSize();
+			$(window).resize(function() {
+				b.updateCanvasSize();
 
-			updateCurtainSize();
-		});
+				updateCurtainSize();
+			});
 
-		function sendBarrage(){
-			var content = $("#input-barrage").val().replace(/(^\s*)|(\s*$)/g, "");
-
-			if (content.length != 0) {
-				b.addBarrage(content);
-
-				$("#input-barrage").val("");
-
+			function appendRecord(op, content) {
 				records.push({
 					time: b.video.currentTime,
-					operation: "send_barrage",
+					operation: op == 0 ? "send_text" : "send_gift",
 					content: content
 				});
 			}
-		}
 
-		$("#send-barrage").click(function () {
-			sendBarrage();
-		});
+			function sendTextBarrage(){
+				var content = $("#input-barrage").val().replace(/(^\s*)|(\s*$)/g, "");
 
-		$("#input-barrage").keypress(function(event) {
-			if (event.which == 13) {
-				sendBarrage();
+				if (content.length != 0) {
+					b.addTextBarrage(content);
+
+					$("#input-barrage").val("");
+
+					appendRecord(0, content);
+				}
 			}
+
+			$("#send-barrage").click(function () {
+				sendTextBarrage();
+			});
+
+			$("#input-barrage").keypress(function(event) {
+				if (event.which == 13) {
+					sendTextBarrage();
+				}
+			});
+
+			$(".gift-btn").click(function () {
+				var idx = $(this).attr("data-index");
+				var gift = GIFT[idx];
+
+				if (money < gift.cost) {
+					alert("Money NOT Enough");
+
+					return;
+				}
+
+				money -= gift.cost;
+
+				b.addGiftBarrage(idx);
+
+				appendRecord(1, idx);
+			});
 		});
 	});
 });

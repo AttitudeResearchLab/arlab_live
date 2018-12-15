@@ -87,9 +87,25 @@
 					</div>
 
 					<div id="barrage-control" class="container-fluid">
-						<button class="btn btn-purple" id="fullscreen-toggle"><i style="padding-right: 5px" class="fa fa-expand" aria-hidden="true"></i> Fullscreen</button>
-						<button class="btn btn-pink" id="send-barrage">Send</button>
-						<input class="form-control form-control-lg" id="input-barrage" disabled="true" type="text" placeholder="分享弹幕 释放精彩">
+						<div id="gift-barrage-control">
+							<div class="d-flex justify-content-center">
+								<div>
+									<button type="button" class="gift-btn btn btn-primary" disabled="true" data-index=1><img src="res/gift1_icon.png" />荧光棒</button>
+								</div>
+								<div>
+									<button type="button" class="gift-btn btn btn-primary" disabled="true" data-index=2><img src="res/gift2_icon.png" />飞机</button>
+								</div>
+								<div>
+									<button type="button" class="gift-btn btn btn-primary" disabled="true" data-index=3><img src="res/gift3_icon.png" />魔法棒</button>
+								</div>
+							</div>
+						</div>
+
+						<div id="text-barrage-control">
+							<button class="btn btn-purple" id="fullscreen-toggle"><i style="padding-right: 5px" class="fa fa-expand" aria-hidden="true"></i> Fullscreen</button>
+							<button class="btn btn-pink" id="send-barrage">Send</button>
+							<input class="form-control form-control-lg" id="input-barrage" disabled="true" type="text" placeholder="分享弹幕 释放精彩">
+						</div>
 					</div>
 				</div>
 			</div>
