@@ -86,7 +86,7 @@ Barrage.prototype = {
 		for (var i = 0, l = self.showingList.length; i < l; i++) {
 			var txt = self.showingList[i];
 
-			txt.x -= txt.speed;
+			txt.x -= txt.speed * self.canvasScale;
 
 			if (txt.x < -self.getTextWidth(txt)) {
 				self.showingList.splice(i--, 1);
@@ -115,7 +115,7 @@ Barrage.prototype = {
 			size: textSize,
 			x: self.initVideoWidth,
 			y: Math.random() * (self.initVideoHeight - textSize * 2),
-			speed: 3 + Math.random() * 5,
+			speed: 3 + Math.random() * 3,
 			color: self.getRandomColor()
 		});
 	},
