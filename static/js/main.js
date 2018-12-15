@@ -96,9 +96,9 @@ $(document).ready(function() {
 
 	/*************************************************************/
 	/* Skip basic info */
-	$("#user-info-section").remove();
-	$("#video-section").show();
-	$("#video-section").css("display", "flex");
+	// $("#user-info-section").remove();
+	// $("#video-section").show();
+	// $("#video-section").css("display", "flex");
 	/*************************************************************/
 
 
