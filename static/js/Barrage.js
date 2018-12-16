@@ -16,7 +16,6 @@ function Barrage(list, giftImgs, videoObj, canvasObj) {
 	self.initVideoHeight = 0;
 	self.giftImgs = giftImgs;
 
-	self.animationSpeedIdx = 0;
 	self.animationSpeed = 2;
 
 	self.getArrivalTimes();
@@ -126,8 +125,8 @@ Barrage.prototype = {
 					self.ctx.drawImage(self.giftImgs[o.content], o.frameIdx * 90, 0, 90, 90, 0, 0, 90, 90);
 					self.ctx.restore();
 
-					if (self.animationSpeedIdx++ >= self.animationSpeed) {
-						self.animationSpeedIdx = 0;
+					if (o.animationSpeedIdx++ >= self.animationSpeed) {
+						o.animationSpeedIdx = 0;
 
 						if (++o.frameIdx >= GIFT[o.content].frameNum) {
 							o.frameIdx = 0;
@@ -172,6 +171,7 @@ Barrage.prototype = {
 			x: 30,
 			y: self.initVideoHeight,
 			alpha: 0,
+			animationSpeedIdx: 0,
 			fadeDir: "in"
 		});
 	},
