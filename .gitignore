@@ -4,6 +4,8 @@
 *.webm
 *.csv
 
+logs/*.log
+
 .venv/
 __pycache__/
 *.py[cod]
