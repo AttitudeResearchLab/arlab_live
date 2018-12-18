@@ -106,7 +106,7 @@ Barrage.prototype = {
 					self.ctx.restore();
 				}
 			} else if (o.type == "animation") {
-				o.y -= 2 * self.canvasScale;
+				o.y -= o.speed * self.canvasScale;
 
 				if (o.fadeDir == "in") {
 					o.alpha += 0.01;
@@ -115,7 +115,7 @@ Barrage.prototype = {
 						o.fadeDir = "out";
 					}
 				} else {
-					o.alpha -= 0.01;
+					o.alpha -= (o.speed / 2) * 0.01;
 				}
 
 				if (o.alpha >= 0) {
@@ -172,7 +172,8 @@ Barrage.prototype = {
 			y: self.initVideoHeight,
 			alpha: 0,
 			animationSpeedIdx: 0,
-			fadeDir: "in"
+			fadeDir: "in",
+			speed: 2 + Math.random() * 3
 		});
 	},
 
