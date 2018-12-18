@@ -92,6 +92,8 @@ $(document).ready(function() {
 		$("#user-info-section").remove();
 		$("#video-section").show();
 		$("#video-section").css("display", "flex");
+
+		alert("You have " + money + "ARCs to buy gifts.");
 	});
 
 	/*************************************************************/
