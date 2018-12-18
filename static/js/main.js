@@ -63,6 +63,12 @@ function loadBarrage(index, callback) {
 	});
 }
 
+function showModal(opt) {
+	$("#modal-window .modal-title").html(opt.title);
+	$("#modal-window .modal-body").html(opt.content);
+	$("#modal-window").modal("show");
+}
+
 $(document).ready(function() {
 	var records = [];
 	var user = "";
@@ -76,13 +82,13 @@ $(document).ready(function() {
 			id = $("#user-id").val().replace(/(^\s*)|(\s*$)/g, "");
 
 		if (!emailPrefix.match(/^[a-z][a-z0-9]*$/ig) || emailPrefix.length == 0) {
-			alert("Incorrect email prefix!");
+			showModal({title: "Incorrect Email Prefix", content: "Email prefix should start with letters and end up with letters or numbers."})
 
 			return;
 		}
 
 		if (id.length == 0) {
-			alert("Incorrect student ID!");
+			showModal({title: "Incorrect Student ID", content: "Student ID should only consist of numbers."})
 
 			return;
 		}
@@ -93,7 +99,7 @@ $(document).ready(function() {
 		$("#video-section").show();
 		$("#video-section").css("display", "flex");
 
-		alert("You have " + money + "ARCs to buy gifts.");
+		showModal({title: "Money Received", content: "You have <b>" + money + " ARCs</b> to buy gifts. <small>(ARCs is short for ARLab Coins)</small>"})
 	});
 
 	/*************************************************************/
@@ -187,7 +193,7 @@ $(document).ready(function() {
 				var gift = GIFT[idx];
 
 				if (money < gift.cost) {
-					alert("Money NOT Enough");
+					showModal({title: "Money NOT Enough", content: "Only <b>" + money + " ARCs</b> left."});
 
 					return;
 				}
