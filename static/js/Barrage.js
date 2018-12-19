@@ -20,7 +20,15 @@ function Barrage(list, giftImgs, videoObj, canvasObj) {
 
 	self.getArrivalTimes();
 
+	self.played = false;
+
 	self.videoSelector.on("play", function() {
+		if (self.played) {
+			return;
+		}
+
+		self.played = true;
+
 		self.updateCanvasSize();
 
 		$("#input-barrage").removeAttr("disabled");
@@ -50,7 +58,9 @@ Barrage.prototype = {
 			self.arrivalTimes.push(parseFloat(k));
 		}
 
-		self.arrivalTimes.sort();
+		self.arrivalTimes.sort(function(a, b) {
+			return a < b;
+		});
 	},
 
 	updateCanvasSize: function() {
