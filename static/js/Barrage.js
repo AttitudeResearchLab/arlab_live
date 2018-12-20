@@ -101,7 +101,7 @@ Barrage.prototype = {
 			var removeFlag = false;
 
 			if (o.type == "text") {
-				o.x -= o.speed * self.canvasScale;
+				o.x -= o.speed;
 
 				if (o.x < -self.getTextWidth(o)) {
 					removeFlag = true;
@@ -116,7 +116,7 @@ Barrage.prototype = {
 					self.ctx.restore();
 				}
 			} else if (o.type == "animation") {
-				o.y -= o.speed * self.canvasScale;
+				o.y -= o.speed;
 
 				if (o.fadeDir == "in") {
 					o.alpha += 0.01;
@@ -132,7 +132,7 @@ Barrage.prototype = {
 					self.ctx.save();
 					self.ctx.globalAlpha = o.alpha;
 					self.ctx.translate(o.x * self.canvasScale, o.y * self.canvasScale);
-					self.ctx.drawImage(self.giftImgs[o.content], o.frameIdx * 90, 0, 90, 90, 0, 0, 90, 90);
+					self.ctx.drawImage(self.giftImgs[o.content], o.frameIdx * 90, 0, 90, 90, 0, 0, 90 * self.canvasScale, 90 * self.canvasScale);
 					self.ctx.restore();
 
 					if (o.animationSpeedIdx++ >= self.animationSpeed) {
@@ -166,7 +166,7 @@ Barrage.prototype = {
 			size: textSize,
 			x: self.initVideoWidth,
 			y: Math.random() * (self.initVideoHeight - textSize * 2),
-			speed: 3 + Math.random() * 3,
+			speed: 3 + Math.random() * 2,
 			color: self.getRandomColor()
 		});
 	},
